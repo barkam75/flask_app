@@ -4,8 +4,9 @@ app =  Flask(__name__)
 
 @app.route('/')
 def index():
+    name_list = {1,2,3,4,5}
     my_variable='bartek'
-    return render_template('basic.html',my_variable=my_variable)
+    return render_template('basic.html',my_variable=my_variable,list=name_list)
 
 @app.route('/other/<name>')
 def other(name):

@@ -6,8 +6,14 @@
     </head>
     <body>
         <h1>{{my_variable}}</h1>
+        <h3>{{list}}</h3>
         <h1> Welcome to the site!</h1>
         <h2>Here is a static picture</h2>
         <img src="../static/test.jpg" alt="">
+        <ul>
+            {% for item in list %}
+            <li>{{item}}</li>
+            {% endfor %}
+        </ul>
     </body>
 </html>
