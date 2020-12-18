@@ -4,16 +4,12 @@ app =  Flask(__name__)
 
 @app.route('/')
 def index():
-    name_list = {1,2,3,4,5}
-    my_variable='bartek'
-    return render_template('basic.html',my_variable=my_variable,list=name_list)
+    return render_template('basic.html')
 
 @app.route('/other/<name>')
 def other(name):
-    if name[-1:] == "y":
-        return name[:-1] + "iful"
-    else:
-        return name + "y"
+    return render_template('test.html', name = name)
+    
 
 if __name__ == '__main__':
     app.run(debug=True,host= '0.0.0.0')
