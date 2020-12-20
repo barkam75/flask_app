@@ -8,22 +8,21 @@ def index():
 
 @app.route('/other')
 def signup():
-    return render_template('signup.html')
+    return render_template('signup.html') 
 
 @app.route('/thank')
 def thank_you():
+    error_messages = []
     username = request.args.get('username')
     first = request.args.get('first')
     last = request.args.get('last')
-    if username[-1].isdigit():
-        contains_digit = True
-    else:
-        contains_digit = False
-
-    contains_uppercase = any(map(str.isupper, username))
-    contains_lowercase = any(map(str.islower, username))
-
-    return render_template('report.html', contains_digit=contains_digit, contains_uppercase=contains_uppercase, contains_lowercase=contains_lowercase)
+    if not username[-1].isdigit():
+        error_messages.append("Username does not have a number as a last character")
+    if not any(map(str.isupper, username)):
+        error_messages.append("Username does not contain any uppercase characters")
+    if not any(map(str.islower, username)):
+        error_messages.append("Username does not contain any lowercase characters")
+    return render_template('report.html', error_msg = len(error_messages)>0, error_messages=error_messages)
     
 @app.errorhandler(404)
 def page_not_found(e):
