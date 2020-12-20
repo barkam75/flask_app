@@ -1,28 +1,25 @@
 from flask import Flask
 from flask import render_template, request
+from flask_wtf import FlaskForm
+from wtforms import StringField, SubmitField
+
 app =  Flask(__name__)
+app.config['SECRET_KEY'] = 'mysecretkey'
 
-@app.route('/')
-def index():
-    return render_template('index.html')
+class UserForm(FlaskForm):
+    username = StringField('User name')
+    submit = SubmitField('Submit)
+    
 
-@app.route('/other')
-def signup():
-    return render_template('signup.html') 
+@app.route('/', methods = ['GET','POST'])
+def index(methods):
+    username = False
+    my_form = UserForm()
 
-@app.route('/thank')
-def thank_you():
-    error_messages = []
-    username = request.args.get('username')
-    first = request.args.get('first')
-    last = request.args.get('last')
-    if not username[-1].isdigit():
-        error_messages.append("Username does not have a number as a last character")
-    if not any(map(str.isupper, username)):
-        error_messages.append("Username does not contain any uppercase characters")
-    if not any(map(str.islower, username)):
-        error_messages.append("Username does not contain any lowercase characters")
-    return render_template('report.html', error_msg = len(error_messages)>0, error_messages=error_messages)
+    if my_form.validate_on_submit():
+        username = my_form.username.data
+        my_form.username.data = ''
+    return render_template('home.html',form=my_form, user=user)
     
 @app.errorhandler(404)
 def page_not_found(e):
