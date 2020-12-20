@@ -12,9 +12,18 @@ def signup():
 
 @app.route('/thank')
 def thank_you():
+    username = request.args.get('username')
     first = request.args.get('first')
     last = request.args.get('last')
-    return render_template('thankyou.html', first=first, last=last)
+    if username[-1].isdigit():
+        contains_digit = True
+    else:
+        contains_digit = False
+
+    contains_uppercase = any(map(str.isupper, username))
+    contains_lowercase = any(map(str.islower, username))
+
+    return render_template('report.html', contains_digit=contains_digit, contains_uppercase=contains_uppercase, contains_lowercase=contains_lowercase)
     
 @app.errorhandler(404)
 def page_not_found(e):

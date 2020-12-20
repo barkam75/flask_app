@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="jumbotron">
+        <h1>This is a report page from a user signup {{first}} {{last}}</h1>
+</div>
+<div class="jumbotron">
+    {%if contains_digit and contains_uppercase and contains_lowercase%}
+        <h1>Test successful</h1>
+    {% else %}
+        <h1>What the fuck</h1>
+        {%if not contains_digit%}
+            <h1>Username does not contain digit on the last character</h1>
+        {%endif%}
+        {%if not contains_lowercase%}
+            <h1>Username does not contain at least one lowercase character</h1>
+        {%endif%}
+        {%if not contains_uppercase%}
+        <h1>Username does not contain at least one uppercase character</h1>
+        {%endif%}
+    {% endif %}
+    
+</div>
+{% endblock %}
