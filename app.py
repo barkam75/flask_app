@@ -23,6 +23,10 @@ def index():
 @app.route('/boot')
 def boot():
     return render_template('bootstrap_learn.html')
+
+@app.route('/signup')
+def signup():
+    return render_template("signup.html")
     
 @app.errorhandler(404)
 def page_not_found(e):

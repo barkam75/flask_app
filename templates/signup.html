@@ -1,21 +1,46 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="jumbotron">
-    <h1>Welcome to the sign up page</h1>
-    <p>Fill out the form please. </p>
-    <form action="{{url_for('thank_you')}}">
-        <label for="username">Username:</label>
-        <input type="text" name="username">
-        <br>
-        <label for="First">First Name:</label>
-        <input type="text" name="First">
-        <br>
-        <label for="last">Last Name:</label>
-        <input type="text" name="last">
-        <br>
-        <input type="submit" value="Submit Form">
-    </form>
+
+<div class="row">
+    <div class="col-6">
+        <div class="container-fluid">
+        <h1>Hello! This is a test application</h1>
+        <p class="lead">
+          Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. 
+        </p>
+        <hr class="my-4">
+        <p>
+          There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.
+        </p>
+    </div>
+    </div>
+    <div class="col-1">
+
+    </div>
+    <div class="col-4">
+        <div class="jumbotron">
+            <h1>Welcome to the sign up page</h1>
+            <p>Fill out the form please. </p>
+            <form>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Email address</label>
+                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Password</label>
+                    <input type="password" class="form-control" id="exampleInputPassword1">
+                </div>
+                <div class="form-group form-check">
+                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                    <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
 </div>
+
 
 {% endblock %}
