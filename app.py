@@ -8,18 +8,21 @@ app.config['SECRET_KEY'] = 'mysecretkey'
 
 class UserForm(FlaskForm):
     username = StringField('User name')
-    submit = SubmitField('Submit)
+    submit = SubmitField('Submit')
     
 
 @app.route('/', methods = ['GET','POST'])
-def index(methods):
+def index():
     username = False
     my_form = UserForm()
-
     if my_form.validate_on_submit():
         username = my_form.username.data
         my_form.username.data = ''
-    return render_template('home.html',form=my_form, user=user)
+    return render_template('home.html',form=my_form, username=username)
+
+@app.route('/boot')
+def boot():
+    return render_template('bootstrap_learn.html')
     
 @app.errorhandler(404)
 def page_not_found(e):
@@ -28,3 +31,5 @@ def page_not_found(e):
 if __name__ == '__main__':
     app.run(debug=True,host= '0.0.0.0')
 
+#Page refresh command for a page
+#<meta http-equiv="refresh" content="30">

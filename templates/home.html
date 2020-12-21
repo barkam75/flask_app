@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content%}
+<div class="jubotron">
+    <p>Welcome to a testest app</p>
+    {%if username%}
+    <p>Username you entered is {{username}}</p>
+    <p>Please update it below</p>
+    {%else%}
+    <p>Please enter your username:</p>
+    {%endif%}
+</div> 
+
+<div class="jumbotron">
+    <form method="POST">
+        {{ form.hidden_tag() }}
+        {{ form.username.label }}{{ form.username() }}
+        {{ form.submit() }}
+    </form>
+</div>
+{% endblock %}
