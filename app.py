@@ -5,6 +5,7 @@ from wtforms import StringField, SubmitField
 
 app =  Flask(__name__)
 app.config['SECRET_KEY'] = 'mysecretkey'
+app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
 
 class UserForm(FlaskForm):
     username = StringField('User name')
@@ -22,11 +23,14 @@ def index():
 
 @app.route('/boot')
 def boot():
-    return render_template('bootstrap_learn.html')
+    return render_template('bootstrap_learn.html') 
 
 @app.route('/signup')
 def signup():
     return render_template("signup.html")
+@app.route('/csslearn')
+def csslearn():
+    return render_template('csslearn.html')
     
 @app.errorhandler(404)
 def page_not_found(e):
