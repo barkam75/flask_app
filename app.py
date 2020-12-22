@@ -10,6 +10,10 @@ app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
 class UserForm(FlaskForm):
     username = StringField('User name')
     submit = SubmitField('Submit')
+
+class MapForm(FlaskForm):
+    zoom = StringField('Zoom')
+    submit = SubmitField('Submit')
     
 
 @app.route('/', methods = ['GET','POST'])
@@ -21,17 +25,15 @@ def index():
         my_form.username.data = ''
     return render_template('home.html',form=my_form, username=username)
 
-@app.route('/boot')
-def boot():
-    return render_template('bootstrap_learn.html') 
+@app.route('/map', methods = ['GET','POST'])
+def leaflet_map():
+    zoom =10
+    zoom_form = MapForm()
+    if zoom_form.validate_on_submit():
+        zoom = zoom_form.zoom.data
+    return render_template('map.html',form=zoom_form, zoom=zoom)
 
-@app.route('/signup')
-def signup():
-    return render_template("signup.html")
-@app.route('/csslearn')
-def csslearn():
-    return render_template('csslearn.html')
-    
+
 @app.errorhandler(404)
 def page_not_found(e):
     return render_template('404.html'), 404
