@@ -43,3 +43,5 @@ if __name__ == '__main__':
 
 #Page refresh command for a page
 #<meta http-equiv="refresh" content="30">
+
+#Maps leaflet.js, Tilestache, Mapbox Studio
