@@ -15,15 +15,13 @@
     <div class="col-4">
         <div id="mapid" style="width: 600px; height: 400px;"></div>
         <hr class="my-4">
-        <div class="mb-3">
-            <form method="POST">
-                {{ form.hidden_tag() }}
-                {{ form.zoom.label }}{{ form.zoom() }}
-                {{ form.submit() }}
-            </form>
-          </div>
+        <form class="row g-3" method="POST">
+            {{ form.hidden_tag() }}
+            <div class="col-auto">{{form.zoom.label()}}</div>
+            <div class="col-auto">{{ form.zoom(class='form-control') }}</div>
+            <div class="col-auto">{{ form.submit(class='btn btn-primary') }}</div>
+        </form>
     </div>
-
 </div>
 
 <script>
